@@ -1,12 +1,11 @@
-import { startOfHour } from 'date-fns';
 import { getRepository } from 'typeorm';
-import { hash, compare } from 'bcryptjs';
+import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
-import authConfig from '../config/auth';
+import authConfig from '@config/auth';
 
-import AppError from '../errors/AppError';
+import AppError from '@shared/errors/AppError';
 
-import User from '../models/User';
+import User from '@modules/users/infra/typeorm/entities/User';
 
 interface Request {
   email: string;
@@ -20,7 +19,10 @@ interface Response {
 
 class AuthenticateUserService {
   public async execute({ email, password }: Request): Promise<Response> {
+    console.log('Chegou 1');
     const usersRepository = getRepository(User);
+
+    console.log('Chegou');
 
     const user = await usersRepository.findOne({
       where: { email },

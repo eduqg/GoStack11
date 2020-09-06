@@ -7,7 +7,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 
-import User from './User';
+import User from '@modules/users/infra/typeorm/entities/User';
 
 //  Decorators
 // A classe é como um parametro que estou passando para o meu Entity
