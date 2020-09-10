@@ -67,12 +67,24 @@ yarn add jsonwebtoken
 yarn add @types/jsonwebtoken -D
 ```
 
+## Jest Tests
+
+
 
 ```console
+yarn add jest
+yarn jest --init
+yarn add ts-jest -D
+yarn add @types/jest -D
 ```
 
+Editar jest.config -> Test match e preset
+Eslintrc -> "jest":true
+
+moduleNameMapper para importacao de @modules
 
 ```console
+yarn test
 ```
 
 
