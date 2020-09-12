@@ -4,9 +4,9 @@ import '@modules/users/providers';
 import './providers';
 
 import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
-import IUsersRepository from '@modules/users/repositories/IUsersRepositoty';
-
 import AppointmentsRepository from '@modules/appointments/infra/typeorm/repositories/AppointmentsRepository';
+
+import IUsersRepository from '@modules/users/repositories/IUsersRepositoty';
 import UsersRepository from '@modules/users/infra/typeorm/repositories/UsersRepository';
 
 container.registerSingleton<IAppointmentsRepository>(
