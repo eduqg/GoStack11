@@ -23,6 +23,16 @@ class Appointment {
   @JoinColumn({ name: 'provider_id' })
   provider: User;
 
+  // Coluna no banco de dados
+  @Column()
+  user_id: string;
+
+  // Não é convertido em uma coluna no banco de dados
+  // Join column -> Qual coluna nessa tabela faz o relacionamento
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'user_id' })
+  user: User;
+
   @Column('time with time zone')
   date: Date;
 
