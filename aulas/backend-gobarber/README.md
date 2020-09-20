@@ -69,8 +69,6 @@ yarn add @types/jsonwebtoken -D
 
 ## Jest Tests
 
-
-
 ```console
 yarn add jest
 yarn jest --init
@@ -87,48 +85,82 @@ moduleNameMapper para importacao de @modules
 yarn test
 ```
 
+## MongoDB
 
 ```console
+yarn add mongodb
+yarn add @types/mongodb -D
+```
+
+## Celebrate to validations
+
+```console
+yarn add celebrate
+yarn add @types/hapi__joi -D
 ```
 
 
+
+## Dotenv
+
 ```console
+yarn add dotenv
+```
+
+Também importar na raiz
+
+## Class Transformer para adicionar informações em retornos
+
+```console
+ yarn dev:server
+  yarn add class-transformer
 ```
 
 
+### Aws Email SES
+
 ```console
+yarn add aws-sdk
 ```
-
-
-### Email SES
 
 Conta de email e dominio para unform dev -> zoho 5 grátis
 
 Preciso de dominio
 
+## Mime - Tipo de arquivos
+
 ```console
+yarn add mime
 ```
 
+## Redis
+
+docker run --name redis -p 6379:6379 -d -t redis:alpine
 
 ```console
+yarn add ioredis
+yarn add @types/ioredis -D
 ```
 
+## Date dog - monitor de queries
+
+
+## Brute force
 
 ```console
+yarn add rate-limiter-flexible
+yarn add redis
+yarn add @types/redis -D
 ```
 
-
 ```console
+
 ```
 
-
 ```console
+
 ```
 
-
 ```console
-```
 
-
-```console
 ```
