@@ -100,6 +100,12 @@ yarn test
 ```
 
 
+### Email SES
+
+Conta de email e dominio para unform dev -> zoho 5 grátis
+
+Preciso de dominio
+
 ```console
 ```
 
