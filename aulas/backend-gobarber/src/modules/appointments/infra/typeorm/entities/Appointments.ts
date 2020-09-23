@@ -29,6 +29,8 @@ class Appointment {
 
   // Não é convertido em uma coluna no banco de dados
   // Join column -> Qual coluna nessa tabela faz o relacionamento
+  // eager = traz usuários de appointments  @ManyToOne(() => User, { eager: true })
+  // lazy = permite buscar relacionamento com await appointment.user
   @ManyToOne(() => User)
   @JoinColumn({ name: 'user_id' })
   user: User;

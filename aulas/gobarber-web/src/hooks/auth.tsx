@@ -2,9 +2,16 @@ import React, { useState, createContext, useCallback, useContext } from 'react';
 
 import api from '../services/api';
 
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  avatar_url: string;
+}
+
 interface AuthState {
   token: string;
-  user: object;
+  user: User;
 }
 
 interface SignInCredentials {
@@ -13,9 +20,10 @@ interface SignInCredentials {
 }
 
 interface AuthContextData {
-  user: object;
+  user: User;
   signIn(credential: SignInCredentials): Promise<void>;
   signOut(): void;
+  updateUser(user: User): void;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -26,6 +34,8 @@ const AuthProvider: React.FC = ({ children }) => {
     const user = localStorage.getItem('@GoBarber:user');
 
     if (token && user) {
+      api.defaults.headers.authorization = `Bearer ${token}`;
+
       return { token, user: JSON.parse(user) };
     }
 
@@ -33,21 +43,30 @@ const AuthProvider: React.FC = ({ children }) => {
   });
 
   const signIn = useCallback(async ({ email, password }) => {
-    const response = await api.post<{ token: string; user: object }>(
-      'sessions',
-      {
-        email,
-        password,
-      },
-    );
+    const response = await api.post<{ token: string; user: User }>('sessions', {
+      email,
+      password,
+    });
 
     const { token, user } = response.data;
 
     localStorage.setItem('@GoBarber:token', token);
     localStorage.setItem('@GoBarber:user', JSON.stringify(user));
 
+    api.defaults.headers.authorization = `Bearer ${token}`;
+
     setData({ token, user });
   }, []);
+
+  // Partial<User> = updateData contem alguns dados de User
+  const updateUser = useCallback(
+    async (user: User) => {
+      localStorage.setItem('@GoBarber:user', JSON.stringify(user));
+
+      setData({ token: data.token, user });
+    },
+    [data.token],
+  );
 
   const signOut = useCallback(() => {
     localStorage.removeItem('@GoBarber:token');
@@ -57,7 +76,9 @@ const AuthProvider: React.FC = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
+    <AuthContext.Provider
+      value={{ user: data.user, signIn, signOut, updateUser }}
+    >
       {children}
     </AuthContext.Provider>
   );

@@ -157,6 +157,21 @@ yarn add @types/redis -D
 
 ```
 
+## Auto imports VSCode
+
+"javascript.suggest.autoImports": true,
+"typescript.suggest.autoImports": true,
+
+## Insomnia auto auth
+
+No token colocar response body
+
+$.token
+
+No history
+
+
+
 ```console
 
 ```

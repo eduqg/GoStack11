@@ -16,10 +16,12 @@ import '@shared/container';
 
 const app = express();
 
-app.use(rateLimiter);
 app.use(cors());
 app.use(express.json());
 app.use('/files', express.static(uploadConfig.uploadsFolder));
+
+// Aplicar rate limit excluindo rota de files nesse caso
+app.use(rateLimiter);
 app.use(routes);
 
 app.use(errors());
