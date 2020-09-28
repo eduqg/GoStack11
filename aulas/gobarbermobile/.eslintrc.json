@@ -38,6 +38,7 @@
     "prettier/prettier": "error",
     "@typescript-eslint/camelcase": "off",
     "no-unused-expressions": "off",
+    "@typescript-eslint/interface-name-prefix": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
