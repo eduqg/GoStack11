@@ -44,7 +44,6 @@ const SignIn: React.FC = () => {
 
   const { signIn, user } = useAuth();
 
-  console.log(user);
   const handleSignIn = useCallback(async (data: SignInFormData) => {
     try {
       formRef.current?.setErrors({});
@@ -130,7 +129,7 @@ const SignIn: React.FC = () => {
 
             <ForgotPassoword
               onPress={() => {
-                console.log('Esqueci');
+                // console.log('Esqueci');
               }}
             >
               <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>

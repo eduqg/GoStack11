@@ -71,3 +71,7 @@ yarn add axios
 yarn add @react-native-community/async-storage
 yarn android
 ```
+
+## react-native-image-picker
+
+Image editor do react-native para cortar e tratar imagem
